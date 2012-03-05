@@ -96,3 +96,7 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.pizza2me.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.pizza2me.UserRole'
 grails.plugins.springsecurity.authority.className = 'com.pizza2me.Role'
+
+//Spring Security confgiuration
+//grails.plugins.springsecurity.auth.loginFormUrl = "/"
+//grails.plugins.springsecurity.successHandler.defaultTargetUrl = "/pizzeria/list"
