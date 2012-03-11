@@ -1,122 +1,166 @@
-<!doctype html>
 <html>
-	<head>
-		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
-		<style type="text/css" media="screen">
-			#status {
-				background-color: #eee;
-				border: .2em solid #fff;
-				margin: 2em 2em 1em;
-				padding: 1em;
-				width: 12em;
-				float: left;
-				-moz-box-shadow: 0px 0px 1.25em #ccc;
-				-webkit-box-shadow: 0px 0px 1.25em #ccc;
-				box-shadow: 0px 0px 1.25em #ccc;
-				-moz-border-radius: 0.6em;
-				-webkit-border-radius: 0.6em;
-				border-radius: 0.6em;
-			}
+  <head>
+    <title>Welcome to Pizza 2 me</title>
+    <meta name="layout" content="main" />
+<!--    <style type="text/css" media="screen">
+      #nav {
+        margin-top:20px;
+        margin-left:30px;
+        width:228px;
+        float:left;
 
-			.ie6 #status {
-				display: inline; /* float double margin fix http://www.positioniseverything.net/explorer/doubled-margin.html */
-			}
+      }
+      .homePagePanel * {
+        margin:0px;
+      }
+      .homePagePanel .panelBody ul {
+        list-style-type:none;
+        margin-bottom:10px;
+      }
+      .homePagePanel .panelBody h1 {
+        text-transform:uppercase;
+        font-size:1.1em;
+        margin-bottom:10px;
+      }
+      .homePagePanel .panelBody {
+        background: url(images/leftnav_midstretch.png) repeat-y top;
+        margin:0px;
+        padding:15px;
+      }
+      .homePagePanel .panelBtm {
+        background: url(images/leftnav_btm.png) no-repeat top;
+        height:20px;
+        margin:0px;
+      }
 
-			#status ul {
-				font-size: 0.9em;
-				list-style-type: none;
-				margin-bottom: 0.6em;
-				padding: 0;
-			}
-            
-			#status li {
-				line-height: 1.3;
-			}
+      .homePagePanel .panelTop {
+        background: url(images/leftnav_top.png) no-repeat top;
+        height:11px;
+        margin:0px;
+      }
+      h2 {
+        margin-top:15px;
+        margin-bottom:15px;
+        font-size:1.2em;
+      }
+      #pageBody {
+        margin-left:280px;
+        margin-right:20px;
+      }
+    </style>-->
+  </head>
+  <body>
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit">
+      <h1>Pizza2me</h1>
+      <p>The place to place your pizza desire!</p>
+      <!--p><a class="btn primary large">Learn more &raquo;</a></p-->
+    </div>
 
-			#status h1 {
-				text-transform: uppercase;
-				font-size: 1.1em;
-				margin: 0 0 0.3em;
-			}
+    <div class="row">
+      <div class="span6">
+        <ul class="media-grid">
+           TODO put list images 
+          <%--li><img src="${resource(dir:'images',file:'notebook.png')}"/></li--%>
+        </ul>
+      </div>
+      <div class="span4">
+        New to <strong>Pizza2me</strong>? Join now!
+        <g:if test="${flash.message}">
+          <div class="alert-message error">
+            <a class="close" href="#">×</a>
+${flash.message}
+          </div>
+        </g:if>
+        <g:hasErrors bean="${person}">
+          <div class="alert-message error">
+            <g:renderErrors bean="${person}" as="list" />
+          </div>
+        </g:hasErrors>
 
-			#page-body {
-				margin: 2em 1em 1.25em 18em;
-			}
+        <g:form controller="register" action="save">
+          <div class="span6">
+            <fieldset>
+              <div class="clearfix">
+                <label for="userId">Login Name:</label>
+                <div class="input">
+                  <input type="text" name='userId' tabindex="1" value="${person?.userId?.encodeAsHTML()}"/>
+                  <p class="help-block">
+                      Mandatory, should be unique
+                  </p>
+                </div>
+              </div>
 
-			h2 {
-				margin-top: 1em;
-				margin-bottom: 0.3em;
-				font-size: 1em;
-			}
+              <div class="clearfix">
+                <label for="name">Name:</label>
+                <div class="input">
+                  <input type="text" name='name' tabindex="2" value="${person?.profile?.name?.encodeAsHTML()}"
+                         placeholder="Optional"/>
+                  <p class="help-block">
+                      * Optional
+                </p>
+                </div>
+              </div>
+              
+              <div class="clearfix">
+                <label for="name">Surname:</label>
+                <div class="input">
+                  <input type="text" name='surname' tabindex="2" value="${person?.profile?.surname?.encodeAsHTML()}"
+                         placeholder="Optional"/>
+                  <p class="help-block">
+                      * Optional
+                </p>
+                </div>
+              </div>
+              
+              <div class="clearfix">
+                <label for="password">Password:</label>
+                <div class="input">
+                  <input id="password" autocomplete="off" type="password" name='password' tabindex="3" value="${person?.password?.encodeAsHTML()}"/>
+<%--small class="help-inline help-error" id="nomatch" style="display:none;">Passwords don't match</small--%>
+                </div>
+              </div>
 
-			p {
-				line-height: 1.5;
-				margin: 0.25em 0;
-			}
+              <div class="clearfix">
+                <label for="password_confirmation">Confirm Password:</label>
+                <div class="input">
+                  <input id="password_confirmation" autocomplete="off" type="password" name='repassword' tabindex="4" value="${person?.password?.encodeAsHTML()}"/>
+                </div>
+              </div>
 
-			#controller-list ul {
-				list-style-position: inside;
-			}
+              <div class="clearfix">
+                <label for="email">Email:</label>
+                <div class="input">
+                  <input id="email" type="text" name='profile.email' tabindex="5" value="${person?.profile?.email?.encodeAsHTML()}"/>
+                </div>
+              </div>
 
-			#controller-list li {
-				line-height: 1.3;
-				list-style-position: inside;
-				margin: 0.25em 0;
-			}
+              <div class="clearfix">
+                <label for="code">Enter Code: </label>
+                <div class="input">
+                  <input id="code" type="text" name='captcha' tabindex="6" size="8"/>
+                  <img src="${createLink(controller:'captcha', action:'index')}" align="absmiddle"/>
+                </div>
+              </div>
+            </fieldset>
+          </div>
 
-			@media screen and (max-width: 480px) {
-				#status {
-					display: none;
-				}
+          <div class="buttons">
+            <span class="formButton">
+              <input type="submit" value="Create" class="btn primary"></input>
+            </span>
+          </div>
 
-				#page-body {
-					margin: 0 1em 1em;
-				}
+        </g:form>
+      </div>
+    </div>
+  </body>
 
-				#page-body h1 {
-					margin-top: 0;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="status" role="complementary">
-			<h1>Application Status</h1>
-			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${org.codehaus.groovy.runtime.InvokerHelper.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-			</ul>
-			<h1>Installed Plugins</h1>
-			<ul>
-				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-					<li>${plugin.name} - ${plugin.version}</li>
-				</g:each>
-			</ul>
-		</div>
-		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
-
-			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
-				<ul>
-					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-					</g:each>
-				</ul>
-			</div>
-		</div>
-	</body>
+  <script type='text/javascript'>
+  <!--
+  (function(){
+        document.forms['loginForm'].elements['j_username'].focus();
+  })();
+  // -->
+  </script>
 </html>
