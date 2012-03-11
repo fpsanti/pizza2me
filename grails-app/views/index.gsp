@@ -2,7 +2,7 @@
   <head>
     <title>Welcome to Pizza 2 me</title>
     <meta name="layout" content="main" />
-<!--    <style type="text/css" media="screen">
+    <style type="text/css" media="screen">
       #nav {
         margin-top:20px;
         margin-left:30px;
@@ -47,7 +47,7 @@
         margin-left:280px;
         margin-right:20px;
       }
-    </style>-->
+    </style>
   </head>
   <body>
     <!-- Main hero unit for a primary marketing message or call to action -->

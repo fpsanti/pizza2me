@@ -38,11 +38,6 @@
           <div class="container">
             <a class="brand" href="#">Pizza2me</a>
             <sec:ifLoggedIn>
-              <ul class="nav">
-<%--li class="active"><a href="${createLink(controller: 'task', action: 'list')}">Tasks</a></li>
-<li><a href="${createLink(controller: 'memo', action: 'list')}">Memos</a></li--%>
-                li><a href="#contact">Todos</a></li
-              </ul>
               <g:form class="navbar-search pull-left" action="search" controller="search">
                 <input type="text" class="search-query" name="q" placeholder="Search" />
                 <input type="hidden" name="itemType" value="${itemType}"/>
@@ -81,6 +76,7 @@
     
     <div class="container">
       <g:layoutBody/>
+      <hr>
       <footer>
         Pizza2me is made with love in Eastern Italy <br/>
         <p>Version <g:meta name="app.version"/> on Grails <g:meta name="app.grails.version"/></p>
