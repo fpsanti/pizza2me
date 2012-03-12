@@ -35,7 +35,7 @@ class BootStrap {
             return;
         }
         def user = new User(username:"fkuser", 
-            password: springSecurityService.encodePassword("passwd"),
+            password: /*springSecurityService.encodePassword(*/"passwd"/*)*/,
             enabled: true/*, 
             profile: new Profile(name: 'Utonto', surname: 'Utonto', email: 'fake@gmail.com')*/).save(flush: true)
         UserRole.create(user, userRole)

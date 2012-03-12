@@ -90,6 +90,8 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+    
+//    debug 'org.springframework.security'
 }
 
 // Added by the Spring Security Core plugin:
@@ -97,6 +99,6 @@ grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.pizza2me.Use
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.pizza2me.UserRole'
 grails.plugins.springsecurity.authority.className = 'com.pizza2me.Role'
 
-//Spring Security confgiuration
-//grails.plugins.springsecurity.auth.loginFormUrl = "/"
-//grails.plugins.springsecurity.successHandler.defaultTargetUrl = "/pizzeria/list"
+//Spring Security configuration
+grails.plugins.springsecurity.auth.loginFormUrl = "/"
+grails.plugins.springsecurity.successHandler.defaultTargetUrl = "/pizzeria/list"
