@@ -1,5 +1,6 @@
 import grails.util.Environment
 import com.pizza2me.User
+import com.pizza2me.Profile
 import com.pizza2me.Role
 import com.pizza2me.UserRole
 
@@ -36,8 +37,8 @@ class BootStrap {
         }
         def user = new User(username:"fkuser", 
             password: /*springSecurityService.encodePassword(*/"passwd"/*)*/,
-            enabled: true/*, 
-            profile: new Profile(name: 'Utonto', surname: 'Utonto', email: 'fake@gmail.com')*/).save(flush: true)
+            enabled: true, 
+            profile: new Profile(name: 'Utonto', surname: 'Utonto', email: 'fake@gmail.com')).save(flush: true)
         UserRole.create(user, userRole)
     }
 }
