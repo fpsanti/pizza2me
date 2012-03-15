@@ -23,6 +23,17 @@
 			</g:if>
 			<ol class="property-list itemList">
 			
+				<g:if test="${itemListInstance?.itemList}">
+				<li class="fieldcontain">
+					<span id="itemList-label" class="property-label"><g:message code="itemList.itemList.label" default="Item List" /></span>
+					
+						<g:each in="${itemListInstance.itemList}" var="i">
+						<span class="property-value" aria-labelledby="itemList-label"><g:link controller="pizza" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

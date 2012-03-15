@@ -41,6 +41,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${pizzaInstance?.ingredients}">
+				<li class="fieldcontain">
+					<span id="ingredients-label" class="property-label"><g:message code="pizza.ingredients.label" default="Ingredients" /></span>
+					
+						<g:each in="${pizzaInstance.ingredients}" var="i">
+						<span class="property-value" aria-labelledby="ingredients-label"><g:link controller="ingredient" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">
