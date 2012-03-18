@@ -20,6 +20,8 @@ class User {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
+        //the profile should be filled with default target provision on first ordering
+        profile nullable: true
 	}
 
 	static mapping = {
