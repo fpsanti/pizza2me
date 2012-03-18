@@ -108,3 +108,17 @@ grails.plugins.springsecurity.authority.className = 'com.pizza2me.Role'
 //Spring Security configuration
 grails.plugins.springsecurity.auth.loginFormUrl = "/"
 grails.plugins.springsecurity.successHandler.defaultTargetUrl = "/pizzeria/list"
+
+
+//Mail configuration
+grails {
+   mail {
+     host = "smtp.gmail.com"
+     username = "<your email addr>@gmail.com" //smtp username
+     password = "<your password>"
+     props = ["mail.smtp.auth":"true", 					   
+              "mail.smtp.socketFactory.port":"465",
+              "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+              "mail.smtp.socketFactory.fallback":"false"]
+
+} }
