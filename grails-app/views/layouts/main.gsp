@@ -56,12 +56,11 @@
               </form>
             </sec:ifNotLoggedIn>
   
-            <sec:ifLoggedIn>      
-              <ul class="nav secondary-nav">
+            <sec:ifLoggedIn>  
+              <ul class="nav pull-right">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle"><sec:username/></a>
+                  <a href="#" data-toggle="dropdown" class="dropdown-toggle"><sec:username/><!--b class="caret"/--></a>
                   <ul class="dropdown-menu">
-  
                     <li><a href="${createLink(controller: 'user', action: 'account')}">Settings</a></li>
                     <li class="divider"></li>
                     <li><a href="${createLink(controller: 'logout', action: 'index')}">Sign out</a></li>
