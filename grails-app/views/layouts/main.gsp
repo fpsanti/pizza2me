@@ -33,14 +33,13 @@
   <r:layoutResources />
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container">
             <a class="brand" href="#">Pizza2me</a>
             <sec:ifLoggedIn>
               <g:form class="navbar-search pull-left" action="search" controller="search">
                 <input type="text" class="search-query" name="q" placeholder="Search" />
-                <input type="hidden" name="itemType" value="${itemType}"/>
               </g:form>
               <ul class="nav pull-right">
                 <li class="dropdown">
@@ -52,7 +51,6 @@
                   </ul>
                 </li>
               </ul>
-<%--g:link controller="logout" action="index" class="pull-right">Sign out</g:link--%>
             </sec:ifLoggedIn>
           </div>
         </div> <!--navbar-inner  -->
