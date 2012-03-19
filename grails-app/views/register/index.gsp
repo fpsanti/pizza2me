@@ -1,4 +1,4 @@
-  <html lang="en">
+<html lang="en">
     <head>
       <meta name="layout" content="main" />
     </head>

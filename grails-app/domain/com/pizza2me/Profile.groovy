@@ -9,6 +9,7 @@ class Profile {
     String timeZone
     String country
     int maxItems = 10
+    String address
     
     boolean emailShow = false
 
@@ -20,5 +21,6 @@ class Profile {
         maxItems(range: 10..100)
         name(nullable: true, blank: true)
         surname(nullable: true, blank: true)
+        address(nullable: true, blank: false)
     }
 }
