@@ -97,6 +97,9 @@ log4j = {
            'net.sf.ehcache.hibernate'
     
     debug 'grails.plugins.springsecurity.ui.SpringSecurityUiService'
+    
+    def pizzaLogging = ['grails.app.controllers.com.pizza2me.UserController']
+    debug stdout: pizzaLogging
 //    debug 'org.springframework.security'
 }
 

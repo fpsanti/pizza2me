@@ -64,9 +64,23 @@
           <%--li><img src="${resource(dir:'images',file:'notebook.png')}"/></li--%>
         </ul>
       </div>
-      <div class="span4">
+      <div class="span6">
+        <div class="well">
+          <sec:ifNotLoggedIn>
+              <form action='${resource(file: 'j_spring_security_check')}' method='POST' id='loginForm' class="pull-right">
+                <input type='text' class='input-small' name='j_username' id='j_username' value='${request.remoteUser}' placeholder="Username"/>
+                <input type='password' class='input-small' name='j_password' id='j_password' placeholder="Password"/>
+<%--p>
+<label for='remember_me'>Remember me</label>
+<input type='checkbox' class='chk' name='_spring_security_remember_me' id='remember_me'
+<g:if test='${hasCookie}'>checked='checked'</g:if> />
+</p--%>
+                <button class="btn" type="submit">Sign in</button>
+              </form>
+            </sec:ifNotLoggedIn>
+        </div>
         New to <strong>Pizza2me</strong>?<g:link controller="register">Join now!</g:link>
-    </div>
+      </div>
   </body>
 
   <script type='text/javascript'>
