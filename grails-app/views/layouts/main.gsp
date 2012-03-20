@@ -38,7 +38,7 @@
           <div class="container">
             <a class="brand" href="#">Pizza2me</a>
             <sec:ifLoggedIn>
-              <g:form class="navbar-search pull-left" action="search" controller="search">
+              <g:form class="navbar-search pull-left" action="search" controller="pizzeria">
                 <input type="text" class="search-query" name="q" placeholder="Search" />
               </g:form>
               <ul class="nav pull-right">

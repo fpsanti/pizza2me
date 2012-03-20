@@ -9,9 +9,11 @@ class Profile {
     String timeZone
     String country
     int maxItems = 10
-    String address
+    Address address
     
     boolean emailShow = false
+    
+    static embedded = ['address']
 
     static constraints = {
 //        email(email: true)
@@ -21,6 +23,6 @@ class Profile {
         maxItems(range: 10..100)
         name(nullable: true, blank: true)
         surname(nullable: true, blank: true)
-        address(nullable: true, blank: false)
+        address(nullable: true)
     }
 }

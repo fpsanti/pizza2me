@@ -100,4 +100,13 @@ class PizzeriaController {
             redirect(action: "show", id: params.id)
         }
     }
+    
+    def search() {
+        String city = params.q
+        List<Pizzeria> pizzerie = Pizzeria.createCriteria().list {
+            eq("address.city", city)
+        }
+        
+        render view: "list", model: [pizzeriaInstanceList: pizzerie, pizzeriaInstanceTotal: pizzerie.size()]
+    }
 }
