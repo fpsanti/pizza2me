@@ -11,13 +11,13 @@ class Address {
     String city
     String province
     
-    //TODO validators
+    //TODO define validators
     static constraints = {
-        street (nullable:false, blank:false)
-        number (nullable:false, blank:false)
-        cap (nullable:false, blank:false)
-        city (nullable:false, blank:false)
-        province (nullable:false, blank:false)
+        street nullable:true
+        number nullable:true
+        cap nullable:true
+        city nullable:true
+        province nullable:true
     }
 }
 
