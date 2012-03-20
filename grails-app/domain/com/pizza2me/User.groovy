@@ -10,12 +10,12 @@ class User {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
-    
+    Address address
+    Date dateCreated
     Profile profile
 
-    static embedded = ['profile']
+    static embedded = ['profile', 'address']
     
-    Date dateCreated
 
 	static constraints = {
 		username blank: false, unique: true
