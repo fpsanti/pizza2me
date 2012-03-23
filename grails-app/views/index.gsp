@@ -64,96 +64,23 @@
           <%--li><img src="${resource(dir:'images',file:'notebook.png')}"/></li--%>
         </ul>
       </div>
-      <div class="span4">
-        New to <strong>Pizza2me</strong>? Join now!
-        <g:if test="${flash.message}">
-          <div class="alert-message error">
-            <a class="close" href="#">×</a>
-${flash.message}
-          </div>
-        </g:if>
-        <g:hasErrors bean="${person}">
-          <div class="alert-message error">
-            <g:renderErrors bean="${person}" as="list" />
-          </div>
-        </g:hasErrors>
-
-        <g:form controller="register" action="save">
-          <div class="span6">
-            <fieldset>
-              <div class="clearfix">
-                <label for="userId">Login Name:</label>
-                <div class="input">
-                  <input type="text" name='userId' tabindex="1" value="${person?.userId?.encodeAsHTML()}"/>
-                  <p class="help-block">
-                      Mandatory, should be unique
-                  </p>
-                </div>
-              </div>
-
-              <div class="clearfix">
-                <label for="name">Name:</label>
-                <div class="input">
-                  <input type="text" name='name' tabindex="2" value="${person?.profile?.name?.encodeAsHTML()}"
-                         placeholder="Optional"/>
-                  <p class="help-block">
-                      * Optional
-                </p>
-                </div>
-              </div>
-              
-              <div class="clearfix">
-                <label for="name">Surname:</label>
-                <div class="input">
-                  <input type="text" name='surname' tabindex="2" value="${person?.profile?.surname?.encodeAsHTML()}"
-                         placeholder="Optional"/>
-                  <p class="help-block">
-                      * Optional
-                </p>
-                </div>
-              </div>
-              
-              <div class="clearfix">
-                <label for="password">Password:</label>
-                <div class="input">
-                  <input id="password" autocomplete="off" type="password" name='password' tabindex="3" value="${person?.password?.encodeAsHTML()}"/>
-<%--small class="help-inline help-error" id="nomatch" style="display:none;">Passwords don't match</small--%>
-                </div>
-              </div>
-
-              <div class="clearfix">
-                <label for="password_confirmation">Confirm Password:</label>
-                <div class="input">
-                  <input id="password_confirmation" autocomplete="off" type="password" name='repassword' tabindex="4" value="${person?.password?.encodeAsHTML()}"/>
-                </div>
-              </div>
-
-              <div class="clearfix">
-                <label for="email">Email:</label>
-                <div class="input">
-                  <input id="email" type="text" name='profile.email' tabindex="5" value="${person?.profile?.email?.encodeAsHTML()}"/>
-                </div>
-              </div>
-
-              <div class="clearfix">
-                <label for="code">Enter Code: </label>
-                <div class="input">
-                  <input id="code" type="text" name='captcha' tabindex="6" size="8"/>
-                  <img src="${createLink(controller:'captcha', action:'index')}" align="absmiddle"/>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-
-          <div class="buttons">
-            <span class="formButton">
-              <input type="submit" value="Create" class="btn primary"></input>
-            </span>
-          </div>
-
-        </g:form>
+      <div class="span6">
+        <div class="well">
+          <sec:ifNotLoggedIn>
+              <form action='${resource(file: 'j_spring_security_check')}' method='POST' id='loginForm' class="pull-right">
+                <input type='text' class='input-small' name='j_username' id='j_username' value='${request.remoteUser}' placeholder="Username"/>
+                <input type='password' class='input-small' name='j_password' id='j_password' placeholder="Password"/>
+<%--p>
+<label for='remember_me'>Remember me</label>
+<input type='checkbox' class='chk' name='_spring_security_remember_me' id='remember_me'
+<g:if test='${hasCookie}'>checked='checked'</g:if> />
+</p--%>
+                <button class="btn" type="submit">Sign in</button>
+              </form>
+            </sec:ifNotLoggedIn>
+        </div>
+        New to <strong>Pizza2me</strong>?<g:link controller="register">Join now!</g:link>
       </div>
-    </div>
   </body>
 
   <script type='text/javascript'>

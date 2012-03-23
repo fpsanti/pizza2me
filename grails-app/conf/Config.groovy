@@ -75,9 +75,14 @@ log4j = {
     // Example of changing the log pattern for the default console
     // appender:
     //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+    appenders {
+        console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+    }
+    
+    
+    root {
+        warn stdout
+    }
 
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
            'org.codehaus.groovy.grails.web.pages', //  GSP
@@ -91,6 +96,10 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
     
+    debug 'grails.plugins.springsecurity.ui.SpringSecurityUiService'
+    
+    def pizzaLogging = ['grails.app.controllers.com.pizza2me.UserController']
+    debug stdout: pizzaLogging
 //    debug 'org.springframework.security'
 }
 
@@ -102,3 +111,17 @@ grails.plugins.springsecurity.authority.className = 'com.pizza2me.Role'
 //Spring Security configuration
 grails.plugins.springsecurity.auth.loginFormUrl = "/"
 grails.plugins.springsecurity.successHandler.defaultTargetUrl = "/pizzeria/list"
+
+
+//Mail configuration
+grails {
+   mail {
+     host = "smtp.gmail.com"
+     username = "<your email addr>@gmail.com" //smtp username
+     password = "<your password>"
+     props = ["mail.smtp.auth":"true", 					   
+              "mail.smtp.socketFactory.port":"465",
+              "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+              "mail.smtp.socketFactory.fallback":"false"]
+
+} }
