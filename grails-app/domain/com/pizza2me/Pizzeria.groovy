@@ -8,6 +8,6 @@ class Pizzeria {
     
 	static constraints = {
 		name (nullable:false, blank:false)
-		address (nullable:false, blank:false)
+		address (nullable:false)
 	}
 }
