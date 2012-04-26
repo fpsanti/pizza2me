@@ -13,7 +13,7 @@
             <div class="pizzeria">
               ${fieldValue(bean: pizzeria, field: "name")} <br/>
               ${fieldValue(bean: pizzeria, field: "address.city")} <br/>
-              <button class="btn btn-primary" href="#">Menù</button>
+              <g:link class="btn btn-primary" action="listMenu" id="${pizzeria.id}">Menù</g:link>
             </div>
           </g:each>
           <div class="pagination">
