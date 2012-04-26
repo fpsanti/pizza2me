@@ -27,6 +27,7 @@
 
     <!-- Le fav and touch icons -->
     <%-- TODO  link rel="shortcut icon" href="../assets/ico/favicon.ico" --%>
+    <link href="${resource(dir: 'css', file: 'pizza2me.css')}" type="text/css" rel="stylesheet">
 
   <r:require modules="bootstrap"/>
   <g:layoutHead/>
