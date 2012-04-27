@@ -59,10 +59,20 @@ class BootStrap {
         Ingredient sausage = new Ingredient(name: "sausage").save()
         Ingredient onion = new Ingredient(name: "onion").save()
         
-        Pizza marinara = new Pizza(name: "marinara", price: 3.50, ingredients: [tomato, origan, onion]).save()
-        println "marinara is ${marinara.name}"
+        Pizza marinara = new Pizza(name: "marinara", price: 3.50)
+        marinara.addToIngredients(tomato)
+        marinara.addToIngredients(origan)
+        marinara.addToIngredients(onion)
+        
+        Pizza hotSausage = new Pizza(name: "salamino", price: 4)
+        hotSausage.addToIngredients(tomato)
+        hotSausage.addToIngredients(origan)
+        hotSausage.addToIngredients(sausage)
         
         marinara.pizzeria = alCasale
+        hotSausage.pizzeria = alCasale
+
+        assert hotSausage.save() != null
         assert marinara.save() != null
     }
 }
