@@ -114,11 +114,10 @@ class PizzeriaController {
     def listMenu(long id) {
         Pizzeria pizzeria = Pizzeria.get(id)
         if (!pizzeria) {
-            flash.error "Teh given pizzeria $id hasn't got a defined menù"
+            flash.error "The given pizzeria $id hasn't got a defined menù"
             redirect action: "list"
         } else {
-            List<Pizza> pizzas = Pizza.findByPizzeria(pizzeria)
-            redirect controller: "pizza", action: "list", model: [pizzas: pizzas]
+            redirect controller: "pizza", action: "showMenu", params: [id: id]
         }
     }
 }
