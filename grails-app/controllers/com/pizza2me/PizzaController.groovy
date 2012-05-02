@@ -22,6 +22,28 @@ class PizzaController {
         
         [pizzas: pizzas, pizzaInstanceTotal: numPizzas]
     }
+    
+    /**
+     * Given the user selection and quantities computes the total price
+     **/
+    def computeTotal() {
+        println "found params $params"
+        double computedTotal = 0
+        params.each { String key, value ->
+            if (key.startsWith('pizza_') && key.endsWith('.partialCount')) {
+                long idPizza = key[key.indexOf('_')+1..key.indexOf('.partialCount')-1] as long
+                int quantity = value as int
+                Pizza pizza = Pizza.get(idPizza)
+                computedTotal += (pizza.price * quantity)
+            }
+        }
+        
+        render(contentType:"text/json") {
+            total = computedTotal
+        }
+        
+//        [total: total]
+    }
 
 //    def create() {
 //        [pizzaInstance: new Pizza(params)]
