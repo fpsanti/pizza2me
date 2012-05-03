@@ -6,10 +6,6 @@ class PizzaController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-//    def index() {
-//        redirect(action: "listMenu", params: params)
-//    }
-
     def showMenu(long id) {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         
@@ -29,22 +25,28 @@ class PizzaController {
     def computeTotal() {
         println "found params $params"
         double computedTotal = 0
-        params.each { String key, value ->
-            if (key.startsWith('pizza_') && key.endsWith('.partialCount')) {
-                long idPizza = key[key.indexOf('_')+1..key.indexOf('.partialCount')-1] as long
-                int quantity = value as int
-                Pizza pizza = Pizza.get(idPizza)
-                computedTotal += (pizza.price * quantity)
-            }
+        Utils.scanPizzaOrder(params) { pizza, int quantity ->
+            computedTotal += (pizza.price * quantity)
         }
         
         render(contentType:"text/json") {
             total = computedTotal
         }
-        
-//        [total: total]
     }
-
+    
+    def issueOrder() {
+        Order newOrder = new Order()
+        Utils.scanPizzaOrder(params) { pizza, int quantity ->
+            newOrder.addToItems(new OrderItem(pizza: pizza, quantity: quantity))
+        }
+        if (newOrder.save()) {
+            flash.error = "Error issue the order"
+            redirect action: "showMenu"
+        } else {
+            redirect controller: "order", action: "chooseDestination", id: newOrder.id
+        }
+    }
+    
 //    def create() {
 //        [pizzaInstance: new Pizza(params)]
 //    }
