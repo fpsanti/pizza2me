@@ -1,0 +1,19 @@
+.pizzeria {
+    background-color: #DDD;
+    position: relative;
+    margin-bottom: 1em;
+    /*padding: 1.5em;*/
+    border-radius: 5px;
+    /*border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;*/
+}
+
+.orderSummary {
+    background-color: #DDD;
+    position: relative;
+    margin-bottom: 1em;
+    /*padding: 1.5em;*/
+    border-radius: 5px;
+    /*border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;*/
+}
