@@ -11,6 +11,8 @@ class Address {
     String city
     String province
     
+    static belongsTo = Profile
+    
     //TODO define validators
     static constraints = {
         street nullable:true

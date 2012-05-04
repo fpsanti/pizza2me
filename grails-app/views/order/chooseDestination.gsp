@@ -15,6 +15,9 @@
                 ${fieldValue(bean: dest, field: "street")} &nbsp; 
                 ${fieldValue(bean: dest, field: "number")} <br/>
               </div>
+              Address ID: ${dest.id} <br/>
+              Order ID: ${orderId}
+              <g:link action="order" params="[addressId: dest.id, orderId: orderId]"> Deliver here </g:link>
             </g:each>
         </div>
       </div>  
