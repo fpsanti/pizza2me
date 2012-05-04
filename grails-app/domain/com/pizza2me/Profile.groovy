@@ -13,7 +13,7 @@ class Profile {
     
     boolean emailShow = false
     
-    static embedded = ['address']
+//    static embedded = ['address']
 
     static constraints = {
 //        email(email: true)

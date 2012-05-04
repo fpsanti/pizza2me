@@ -3,6 +3,8 @@ package com.pizza2me
 import org.springframework.dao.DataIntegrityViolationException
 
 class PizzaController {
+    
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -10,6 +12,8 @@ class PizzaController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         
         Pizzeria pizzeria = Pizzeria.get(id)
+        
+        println "pizzeria ID is $id and pizzeria obj is $pizzeria"
         
         //[max: 3, offset: 2, sort: "title", order: "desc"]
         int numPizzas = Pizza.countByPizzeria(pizzeria)
@@ -35,14 +39,19 @@ class PizzaController {
     }
     
     def issueOrder() {
-        Order newOrder = new Order()
+        User customer = User.get(springSecurityService.principal.id)
+        CustomerOrder newOrder = new CustomerOrder()
         Utils.scanPizzaOrder(params) { pizza, int quantity ->
             newOrder.addToItems(new OrderItem(pizza: pizza, quantity: quantity))
         }
-        if (newOrder.save()) {
+        newOrder.customer = customer
+        
+        if (newOrder.save(flush: true) == null) {
+            println newOrder.errors
             flash.error = "Error issue the order"
             redirect action: "showMenu"
         } else {
+            println " newOrder.id is ${newOrder.id}"
             redirect controller: "order", action: "chooseDestination", id: newOrder.id
         }
     }
