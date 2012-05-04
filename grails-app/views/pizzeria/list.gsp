@@ -10,10 +10,11 @@
       <div class="row">
         <div class="span4">
           <g:each in="${pizzeriaInstanceList}" status="i" var="pizzeria">
-            <div class="pizzeria">
-              ${fieldValue(bean: pizzeria, field: "name")} <br/>
-              ${fieldValue(bean: pizzeria, field: "address.city")} <br/>
-              <g:link class="btn btn-primary" action="listMenu" id="${pizzeria.id}">Menù</g:link>
+            <div class="pizzeria span4">
+              <g:render template="address" model="['pizzeria': pizzeria]"/>
+              <div class="span2 offset1">
+                <g:link class="btn btn-primary" action="listMenu" id="${pizzeria.id}">View menù</g:link>
+              </div>
             </div>
           </g:each>
           <div class="pagination">
