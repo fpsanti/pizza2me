@@ -14,6 +14,8 @@ class PizzeriaController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [pizzeriaInstanceList: Pizzeria.list(params), pizzeriaInstanceTotal: Pizzeria.count()]
     }
+    
+    def map() {}
 
 //    def create() {
 //        [pizzeriaInstance: new Pizzeria(params)]
