@@ -43,14 +43,17 @@ class BootStrap {
         def user = new User(username:"fkuser", 
             password: /*springSecurityService.encodePassword(*/"passwd"/*)*/,
             enabled: true, 
-            profile: new Profile(name: 'Utonto', surname: 'Utonto', email: 'fake@gmail.com', address: new Address(city: 'Firenze', street: 'rome', number: 20))).save(flush: true)
+            profile: new Profile(name: 'Utonto', surname: 'Utonto', email: 'fake@gmail.com', 
+                address: new Address(city: 'Firenze', street: 'rome', number: 20))).save(flush: true)
         UserRole.create(user, userRole)
     }
     
     
     private createPizzeria() {
-        Pizzeria alCasale = new Pizzeria(name: "Al casale", address: new Address(street: "via Roma", number:"22/A", city: "Treviso")).save()
-        Pizzeria catapecchia = new Pizzeria(name: "Alla catapecchia", address: new Address(street: "via Roma", number:"1", city: "Fiumicello")).save()
+        Pizzeria alCasale = new Pizzeria(name: "Al casale", 
+            address: new Address(street: "via Roma", number:"22/A", city: "Treviso", latitude: 45.66168610, longitude: 12.24575610)).save()
+        Pizzeria catapecchia = new Pizzeria(name: "Alla catapecchia", 
+            address: new Address(street: "via Roma", number:"1", city: "Fiumicello", latitude: 45.8052710, longitude: 13.41350130)).save()
         
         //Defines some pizzas
         Ingredient tomato = new Ingredient(name: "tomato").save()

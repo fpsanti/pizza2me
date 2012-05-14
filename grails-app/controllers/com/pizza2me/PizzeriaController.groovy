@@ -1,5 +1,6 @@
 package com.pizza2me
 
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 class PizzeriaController {
@@ -16,6 +17,20 @@ class PizzeriaController {
     }
     
     def map() {}
+    
+    def searched() {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        List pizzeriaList = Pizzeria.list(params)
+        
+        int i = 0
+        def res = pizzeriaList.inject([]) { acc, Pizzeria p ->
+            acc << [p.name, p.address.latitude, p.address.longitude, i]
+            i++
+            return acc
+        }
+        
+        render res as JSON
+    }
 
 //    def create() {
 //        [pizzeriaInstance: new Pizzeria(params)]
