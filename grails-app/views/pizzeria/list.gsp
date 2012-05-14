@@ -12,9 +12,9 @@
   <body>
     <div class="content">
       <div class="row">
-        <div class="span4">
+        <div class="span6">
           <g:each in="${pizzeriaInstanceList}" status="i" var="pizzeria">
-            <div id="item_$i" class="pizzeria span4">
+            <div id="item_$i" class="pizzeria span5">
               <g:render template="address" model="['pizzeria': pizzeria]"/>
               <div class="span2 offset1">
                 <g:link class="btn btn-primary" action="listMenu" id="${pizzeria.id}">View menù</g:link>
@@ -25,8 +25,8 @@
             <g:paginate total="${pizzeriaInstanceTotal}" />
           </div>
         </div>
-        <div id="mapPanel" class="span8">
-          <iframe style="width:600px;height:300px"
+        <div id="mapPanel" class="span6">
+          <iframe style="width:400px;height:300px"
               src="/pizza2me/pizzeria/map"></iframe>
         </div>
       </div>  
