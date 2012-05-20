@@ -2,16 +2,15 @@ package com.pizza2me
 
 class Pizza {
 
-	static hasMany = [ingredients:Ingredient]
-	
+	Pizzeria pizzeria
 	String name
 	Double price
-	List<Ingredient> ingredients = []
+	List<Ingredient> ingredients
+
+	static hasMany = [ingredients: Ingredient]
 
 	static constraints = {
 		name (nullable:false, blank:false)
-		price (nullable:false, blank:false)
-		ingredients (nullable:false, blank:false)
+		price (nullable:false)
 	}
-	
 }
